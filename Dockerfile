@@ -10,7 +10,8 @@
 # ---------------------------
 # Stage 1: BUILD
 # ---------------------------
-FROM eclipse-temurin:17-jdk-alpine AS builder
+# Imagen oficial de Maven con JDK 17 — incluye mvn listo para usar
+FROM maven:3.9.6-eclipse-temurin-17-alpine AS builder
 
 LABEL stage="builder"
 
@@ -21,7 +22,7 @@ WORKDIR /app
 COPY pom.xml .
 
 # Descarga de dependencias en modo offline para pre-popular el caché local
-RUN mvn dependency:go-offline -B 2>/dev/null || true
+RUN mvn dependency:go-offline -B
 
 # Copiamos el código fuente completo
 COPY src ./src
