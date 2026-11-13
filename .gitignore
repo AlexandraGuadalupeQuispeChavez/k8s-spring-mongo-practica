@@ -1,0 +1,16 @@
+# Dependencias y build
+target/
+*.jar
+*.class
+
+# Secret con credenciales (NO subir a repos públicos)
+k8s/03-db-secret.yaml
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
